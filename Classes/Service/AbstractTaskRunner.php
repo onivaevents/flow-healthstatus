@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace t3n\Flow\HealthStatus\Service;
+namespace Oniva\Flow\HealthStatus\Service;
 
 /**
- * This file is part of the t3n.Flow.HealthStatus package.
+ * This file is part of the Oniva.Flow.HealthStatus package.
  *
  * (c) 2018 yeebase media GmbH
+ * (c) 2025 Oniva AG
  *
  * This package is Open Source Software. For the full copyright and license
  * information, please view the LICENSE file which was distributed with this
@@ -21,7 +22,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Configuration\Exception\InvalidConfigurationException;
 use Neos\Flow\ObjectManagement\ObjectManagerInterface;
 use Neos\Utility\PositionalArraySorter;
-use t3n\Flow\HealthStatus\Task\TaskInterface;
+use Oniva\Flow\HealthStatus\Task\TaskInterface;
 
 abstract class AbstractTaskRunner
 {
@@ -43,7 +44,7 @@ abstract class AbstractTaskRunner
     /**
      * @var string
      */
-    protected $defaultTaskClassName = 't3n\Flow\HealthStatus\Task\%sTask';
+    protected $defaultTaskClassName = 'Oniva\Flow\HealthStatus\Task\%sTask';
 
 
     /**
@@ -149,7 +150,7 @@ abstract class AbstractTaskRunner
         $task = new $className($name, $configuration['options'] ?? []);
 
         if (! ($task instanceof TaskInterface)) {
-            $message = sprintf('%s does not implement \t3n\Flow\HealthStatus\Task\TaskInterface', get_class($task));
+            $message = sprintf('%s does not implement \Oniva\Flow\HealthStatus\Task\TaskInterface', get_class($task));
             throw new InvalidConfigurationException($message, 1502699058);
         }
 

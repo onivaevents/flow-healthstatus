@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace t3n\Flow\HealthStatus\Eel\Helper;
+namespace Oniva\Flow\HealthStatus\Eel\Helper;
 
 /**
- * This file is part of the t3n.Flow.HealthStatus package.
+ * This file is part of the Oniva.Flow.HealthStatus package.
  *
  * (c) 2018 yeebase media GmbH
+ * (c) 2025 Oniva AG
  *
  * This package is Open Source Software. For the full copyright and license
  * information, please view the LICENSE file which was distributed with this
@@ -17,7 +18,7 @@ namespace t3n\Flow\HealthStatus\Eel\Helper;
 use Neos\Eel\ProtectedContextAwareInterface;
 use Neos\Error\Messages\Error;
 use Neos\Flow\Annotations as Flow;
-use t3n\Flow\HealthStatus\Service\EelRuntime;
+use Oniva\Flow\HealthStatus\Service\EelRuntime;
 
 class ChainHelper implements ProtectedContextAwareInterface
 {

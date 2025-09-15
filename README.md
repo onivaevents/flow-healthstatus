@@ -1,11 +1,13 @@
-[![CircleCI](https://circleci.com/gh/t3n/flow-healthstatus.svg?style=svg)](https://circleci.com/gh/t3n/flow-healthstatus) [![Latest Stable Version](https://poser.pugx.org/t3n/flow-healthstatus/v/stable)](https://packagist.org/packages/t3n/flow-healthstatus) [![Total Downloads](https://poser.pugx.org/t3n/flow-healthstatus/downloads)](https://packagist.org/packages/t3n/flow-healthstatus) [![License](https://poser.pugx.org/t3n/flow-healthstatus/license)](https://packagist.org/packages/t3n/flow-healthstatus)
-
-# t3n.Flow.HealthStatus
+# Oniva.Flow.HealthStatus
 
 Package to check the health status of a flow application.
 
 It's extremly useful in a kubernetes environment to use with [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
 to determine if a pod can serve traffic and if it is still alive.
+
+## Acknowledgments
+This project is a fork of [t3n.Flow.HealthStatus](github.com/t3n/flow-healthstatus) originally developed by t3n.
+We thank the original contributors for their foundational work.
 
 ## Usage
 
@@ -15,7 +17,7 @@ To determine the current health status of your application you can check wether 
 
 Simply execute the flow command `./flow app:isready`.
 
-This will execute all tests defined in the `t3n.Flow.HealthStatus.testChain` of the Settings.yaml.
+This will execute all tests defined in the `Oniva.Flow.HealthStatus.testChain` of the Settings.yaml.
 If all tests have passed, the `readyChain` tasks will be executed.
 
 After a successfully run of the `readyChain` an internal lock will be set to prevent repeated execution. The `testChain` will be executed on every run.
@@ -35,13 +37,13 @@ Currently the liveness chain is empty by default and has one possible test: `sta
 Add all your tests in the following format in your apps Settings.yaml:
 
 ```yaml
-t3n:
+Oniva:
   Flow:
     HealthStatus:
       testChain:
         yourUniqueTestKey:
           name: 'Optional name'
-          test: 'database' // shorthand for a predefined task in t3n\Flow\HealthStatus\Test\*.Test or a full qualified class name
+          test: 'database' // shorthand for a predefined task in Oniva\Flow\HealthStatus\Test\*.Test or a full qualified class name
           options:
             key: 'value' // optional options for your test
           position: 'after otherTestKey' // optional position
@@ -50,13 +52,13 @@ t3n:
 After that, the check will execute the ready chain:
 
 ```yaml
-t3n:
+Oniva:
   Flow:
     HealthStatus:
       readyChain:
         yourUniqueTaskKey:
           name: 'Optional name'
-          task: 'command' // shorthand for a predefined task in t3n\Flow\HealthStatus\Task\*.Task or a full qualified class name
+          task: 'command' // shorthand for a predefined task in Oniva\Flow\HealthStatus\Task\*.Task or a full qualified class name
           options:
             key: 'value' // optional options for your task
           position: 'after otherTaskKey' / optional position
@@ -66,13 +68,13 @@ t3n:
 After a successful ready chain invokation, you can call `./flow app:isalive` to execute your liveness chain:
 
 ```yaml
-t3n:
+Oniva:
   Flow:
     HealthStatus:
       livenessChain:
         yourUniqueTestKey:
           name: 'Optional name'
-          task: 'statusCode' // shorthand for a predefined task in t3n\Flow\HealthStatus\LivenessTest\*.Test or a full qualified class name
+          task: 'statusCode' // shorthand for a predefined task in Oniva\Flow\HealthStatus\LivenessTest\*.Test or a full qualified class name
           options:
             key: 'value' // optional options for your task
           position: 'after otherTaskKey' / optional position
@@ -81,13 +83,13 @@ t3n:
 ## Advanced configuration
 
 Before each attempt to execute a ready task,
-the check will test the `t3n.Flow.HealthStatus.defaultReadyTaskCondition` to see if the task should be executed.
+the check will test the `Oniva.Flow.HealthStatus.defaultReadyTaskCondition` to see if the task should be executed.
 In the default configuration this is simply a check to see if the ready lock is not yet set.
 
 You can override this behaviour on a per task basis:
 
 ```yaml
-t3n:
+Oniva:
   Flow:
     HealthStatus:
       readyChain:
@@ -98,7 +100,7 @@ t3n:
 
 _(the `lockName` setting is simply a shorthand for exactly this example)_
 
-To extend the eel context, you can provide additional helpers in `t3n.Flow.HealthStatus.defaultContext`.
+To extend the eel context, you can provide additional helpers in `Oniva.Flow.HealthStatus.defaultContext`.
 
 ## Health status via HTTP-Request
 
@@ -109,7 +111,7 @@ If you'd like to check your Application via HTTP instead of a cli command you ca
   uriPattern: '<HealthStatusSubroutes>'
   subRoutes:
     'HealthStatusSubroutes':
-      package: 't3n.Flow.HealthStatus'
+      package: 'Oniva.Flow.HealthStatus'
       variables:
         'healthStatusEndpoint': 'your-endpoint-name'
 ```
@@ -126,7 +128,7 @@ On the first run all missing database migrations will be executed, the redis cac
 After a successfull run only the testChain will be executed again.
 
 ```yaml
-t3n:
+Oniva:
   Flow:
     HealthStatus:
       testChain:
@@ -159,7 +161,7 @@ t3n:
           task: command
           position: 'end 20'
           lockname: staticresources
-          cacheName: t3n_FlowHealthStatus_LocalLock
+          cacheName: Oniva_FlowHealthStatus_LocalLock
           options:
             command: 'neos.flow:resource:publish'
             arguments:
@@ -175,11 +177,11 @@ t3n:
 ```
 
 Note the `lockname` configuration. This Configuration enables you to run tasks only once per deployment or always.
-By default the `t3n_FlowHealthStatus_Lock` cache is used to read and write locks. Add this to your Caches.yaml and all your application pods will
+By default the `Oniva_FlowHealthStatus_Lock` cache is used to read and write locks. Add this to your Caches.yaml and all your application pods will
 rely on the same lock files as they don't use the local file storage but redis. This will result in a execution once per deployment:
 
 ```yaml
-t3n_FlowHealthStatus_Lock:
+Oniva_FlowHealthStatus_Lock:
   backend: Neos\Cache\Backend\RedisBackend
   backendOptions:
     hostname: 'your-redis-server'
@@ -189,7 +191,7 @@ t3n_FlowHealthStatus_Lock:
 The `staticResources` task has a custom cacheName configured. To ensure that this task will be executed in each application pod set it to local file storage:
 
 ```yaml
-t3n_FlowHealthStatus_LocalLock:
+Oniva_FlowHealthStatus_LocalLock:
   frontend: Neos\Cache\Frontend\StringFrontend
   backend: Neos\Cache\Backend\FileBackend
 ```

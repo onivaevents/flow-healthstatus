@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace t3n\Flow\HealthStatus\Service;
+namespace Oniva\Flow\HealthStatus\Service;
 
 /**
- * This file is part of the t3n.Flow.HealthStatus package.
+ * This file is part of the Oniva.Flow.HealthStatus package.
  *
  * (c) 2018 yeebase media GmbH
+ * (c) 2025 Oniva AG
  *
  * This package is Open Source Software. For the full copyright and license
  * information, please view the LICENSE file which was distributed with this
@@ -38,7 +39,7 @@ class TestRunner extends AbstractTaskRunner
     /**
      * @var string
      */
-    protected $defaultTaskClassName = 't3n\Flow\HealthStatus\Test\%sTest';
+    protected $defaultTaskClassName = 'Oniva\Flow\HealthStatus\Test\%sTest';
 
     /**
      * @var bool

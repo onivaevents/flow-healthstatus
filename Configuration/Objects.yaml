@@ -1,4 +1,4 @@
-t3n\Flow\HealthStatus\Eel\Helper\LockHelper:
+Oniva\Flow\HealthStatus\Eel\Helper\LockHelper:
   properties:
     lockCache:
       object:
@@ -6,4 +6,4 @@ t3n\Flow\HealthStatus\Eel\Helper\LockHelper:
         factoryMethodName: getCache
         arguments:
           1:
-            value: t3n_FlowHealthStatus_Lock
+            value: Oniva_FlowHealthStatus_Lock

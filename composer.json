@@ -1,7 +1,7 @@
 {
     "description": "Flow Framework package to check the health status of you application",
     "type": "neos-package",
-    "name": "t3n/flow-healthstatus",
+    "name": "oniva/flow-healthstatus",
     "config": {
         "bin-dir": "bin"
     },
@@ -9,17 +9,14 @@
     "require": {
         "neos/flow": "~6.0 || ^7.0 || ^8.0"
     },
-    "require-dev": {
-        "t3n/coding-standard": "~1.0.0"
-    },
     "autoload": {
         "psr-4": {
-            "t3n\\Flow\\HealthStatus\\": "Classes/"
+            "Oniva\\Flow\\HealthStatus\\": "Classes/"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "t3n.Flow.HealthStatus"
+            "package-key": "Oniva.Flow.HealthStatus"
         }
     }
 }

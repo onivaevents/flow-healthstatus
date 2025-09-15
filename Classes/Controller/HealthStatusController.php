@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace t3n\Flow\HealthStatus\Controller;
+namespace Oniva\Flow\HealthStatus\Controller;
 
 use Neos\Error\Messages\Result;
 use Neos\Flow\Mvc\Controller\ActionController;
 use Neos\Flow\Mvc\View\JsonView;
-use t3n\Flow\HealthStatus\Service\LivenessTestRunner;
-use t3n\Flow\HealthStatus\Service\ReadyTaskRunner;
-use t3n\Flow\HealthStatus\Service\TestRunner;
-use t3n\Flow\HealthStatus\Task\TaskInterface;
-use t3n\Flow\HealthStatus\Test\TestInterface;
+use Oniva\Flow\HealthStatus\Service\LivenessTestRunner;
+use Oniva\Flow\HealthStatus\Service\ReadyTaskRunner;
+use Oniva\Flow\HealthStatus\Service\TestRunner;
+use Oniva\Flow\HealthStatus\Task\TaskInterface;
+use Oniva\Flow\HealthStatus\Test\TestInterface;
 
 class HealthStatusController extends ActionController
 {

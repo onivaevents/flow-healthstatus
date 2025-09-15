@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace t3n\Flow\HealthStatus\Command;
+namespace Oniva\Flow\HealthStatus\Command;
 
 /**
- * This file is part of the t3n.Flow.HealthStatus package.
+ * This file is part of the Oniva.Flow.HealthStatus package.
  *
  * (c) 2018 yeebase media GmbH
+ * (c) 2025 Oniva AG
  *
  * This package is Open Source Software. For the full copyright and license
  * information, please view the LICENSE file which was distributed with this
@@ -19,11 +20,11 @@ use Neos\Error\Messages\Result;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Cli\CommandController;
 use Neos\Flow\Log\ThrowableStorageInterface;
-use t3n\Flow\HealthStatus\Service\LivenessTestRunner;
-use t3n\Flow\HealthStatus\Service\ReadyTaskRunner;
-use t3n\Flow\HealthStatus\Service\TestRunner;
-use t3n\Flow\HealthStatus\Task\TaskInterface;
-use t3n\Flow\HealthStatus\Test\TestInterface;
+use Oniva\Flow\HealthStatus\Service\LivenessTestRunner;
+use Oniva\Flow\HealthStatus\Service\ReadyTaskRunner;
+use Oniva\Flow\HealthStatus\Service\TestRunner;
+use Oniva\Flow\HealthStatus\Task\TaskInterface;
+use Oniva\Flow\HealthStatus\Test\TestInterface;
 
 /**
  * @Flow\Scope("singleton")

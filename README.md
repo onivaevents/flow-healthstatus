@@ -193,5 +193,5 @@ Oniva_FlowHealthStatus_LocalLock:
 ```
 
 ## Acknowledgments
-This project is a fork of [t3n.Flow.HealthStatus](github.com/t3n/flow-healthstatus) originally developed by t3n.
+This project is a fork of [t3n.Flow.HealthStatus](https://github.com/t3n/flow-healthstatus) originally developed by t3n.
 We thank the original contributors for their foundational work.

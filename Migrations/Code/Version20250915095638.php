@@ -20,5 +20,6 @@ class Version20250915095638 extends AbstractMigration
         $this->searchAndReplace('t3n\Flow\HealthStatus', 'Oniva\Flow\HealthStatus');
         $this->searchAndReplace('t3n.Flow.HealthStatus', 'Oniva.Flow.HealthStatus');
         $this->searchAndReplace('t3n_FlowHealthStatus', 'Oniva_FlowHealthStatus');
+        $this->moveSettingsPaths('t3n.Flow.HealthStatus', 'Oniva.Flow.HealthStatus');
     }
 }

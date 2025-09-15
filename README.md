@@ -192,6 +192,15 @@ Oniva_FlowHealthStatus_LocalLock:
   backend: Neos\Cache\Backend\FileBackend
 ```
 
+## Migration from t3n.Flow.HealthStatus
+
+There is a code migration script to migrate your existing t3n.Flow.HealthStatus installation to Oniva.Flow.HealthStatus.
+
+Simply run the flow command:
+```bash
+./flow core:migrate
+```
+
 ## Acknowledgments
 This project is a fork of [t3n.Flow.HealthStatus](https://github.com/t3n/flow-healthstatus) originally developed by t3n.
 We thank the original contributors for their foundational work.

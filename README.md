@@ -5,10 +5,6 @@ Package to check the health status of a flow application.
 It's extremly useful in a kubernetes environment to use with [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
 to determine if a pod can serve traffic and if it is still alive.
 
-## Acknowledgments
-This project is a fork of [t3n.Flow.HealthStatus](github.com/t3n/flow-healthstatus) originally developed by t3n.
-We thank the original contributors for their foundational work.
-
 ## Usage
 
 To determine the current health status of your application you can check wether the app is ready or still alive.
@@ -195,3 +191,7 @@ Oniva_FlowHealthStatus_LocalLock:
   frontend: Neos\Cache\Frontend\StringFrontend
   backend: Neos\Cache\Backend\FileBackend
 ```
+
+## Acknowledgments
+This project is a fork of [t3n.Flow.HealthStatus](github.com/t3n/flow-healthstatus) originally developed by t3n.
+We thank the original contributors for their foundational work.
